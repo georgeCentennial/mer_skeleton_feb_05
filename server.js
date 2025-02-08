@@ -54,7 +54,10 @@ mongoose.connect(config.mongoUri, {
     //useCreateIndex: true, 
     //useUnifiedTopology: true 
   } 
-)
+).then(() => {
+  console.log("Connected to the database!");
+}).catch((err) => console.error("error message", err));
+  
 
 mongoose.connection.on('error', () => {
     throw new Error(`unable to connect to database: ${config.mongoUri}`) 
